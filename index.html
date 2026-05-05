@@ -1,0 +1,1921 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f4c3a" />
+    <meta name="description" content="Smart Size Finder recommends clothing sizes for Bangladeshi shoppers using height, weight, BMI, and local size patterns." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Smart Size Finder" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%2280%22%20y1%3D%2264%22%20x2%3D%22432%22%20y2%3D%22448%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%231a8a68%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a2e24%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22gold%22%20x1%3D%22170%22%20y1%3D%22132%22%20x2%3D%22348%22%20y2%3D%22394%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23fcd34d%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f59e0b%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M186%20111h140l62%2073-56%2052v166c0%2017-13%2030-30%2030h-92c-17%200-30-13-30-30V236l-56-52%2062-73Z%22%20fill%3D%22%23fff%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M219%20111c6%2036%2020%2054%2037%2054s31-18%2037-54%22%20fill%3D%22none%22%20stroke%3D%22%230f4c3a%22%20stroke-width%3D%2224%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M256%20190v206M166%20251h180M194%20386h124%22%20stroke%3D%22url(%23gold)%22%20stroke-width%3D%2222%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%221%2040%22%2F%3E%0A%20%20%3Ctext%20x%3D%22256%22%20y%3D%22302%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2278%22%20font-weight%3D%22900%22%20fill%3D%22%230f4c3a%22%3E42%3C%2Ftext%3E%0A%3C%2Fsvg%3E%0A" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%2280%22%20y1%3D%2264%22%20x2%3D%22432%22%20y2%3D%22448%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%231a8a68%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a2e24%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22gold%22%20x1%3D%22170%22%20y1%3D%22132%22%20x2%3D%22348%22%20y2%3D%22394%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23fcd34d%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f59e0b%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url(%23bg)%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M186%20111h140l62%2073-56%2052v166c0%2017-13%2030-30%2030h-92c-17%200-30-13-30-30V236l-56-52%2062-73Z%22%20fill%3D%22%23fff%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M219%20111c6%2036%2020%2054%2037%2054s31-18%2037-54%22%20fill%3D%22none%22%20stroke%3D%22%230f4c3a%22%20stroke-width%3D%2224%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M256%20190v206M166%20251h180M194%20386h124%22%20stroke%3D%22url(%23gold)%22%20stroke-width%3D%2222%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%221%2040%22%2F%3E%0A%20%20%3Ctext%20x%3D%22256%22%20y%3D%22302%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2278%22%20font-weight%3D%22900%22%20fill%3D%22%230f4c3a%22%3E42%3C%2Ftext%3E%0A%3C%2Fsvg%3E%0A" />
+    <title>Smart Size Finder</title>
+    <style>
+      :root {
+        --ink: #111827;
+        --muted: #667085;
+        --line: #e4e7ec;
+        --soft: #f6f8fb;
+        --panel: #ffffff;
+        --brand: #0f766e;
+        --brand-dark: #134e4a;
+        --accent: #d97706;
+        --danger: #b42318;
+        --shadow: 0 24px 70px rgba(16, 24, 40, 0.08);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        background: var(--soft);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(15, 118, 110, 0.13), transparent 32rem),
+          linear-gradient(180deg, #fbfcfe 0%, #f4f7fb 100%);
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .app {
+        width: min(1240px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 14px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 14px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        background: rgba(10, 16, 28, 0.92);
+        box-shadow: 0 22px 60px rgba(2, 6, 23, 0.22);
+        backdrop-filter: blur(18px);
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 0;
+        background: transparent;
+        color: #ffffff;
+        cursor: pointer;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .logoSvg {
+        width: 42px;
+        height: 42px;
+        display: block;
+        flex: 0 0 auto;
+      }
+
+      .logoText {
+        display: grid;
+        line-height: 1.1;
+      }
+
+      .logoText small {
+        color: #94a3b8;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .navLinks {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: none;
+      }
+
+      .navLinks button,
+      .ghostButton {
+        border: 0;
+        background: transparent;
+        color: #cbd5e1;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .navLinks button {
+        padding: 10px 14px;
+        border-radius: 999px;
+      }
+
+      .navLinks button.active {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .primaryButton,
+      .secondaryButton {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .primaryButton {
+        border: 1px solid #2dd4bf;
+        background: linear-gradient(135deg, #0f766e, #115e59);
+        color: #ffffff;
+        box-shadow: 0 12px 30px rgba(15, 118, 110, 0.25);
+      }
+
+      .secondaryButton {
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .page {
+        display: none;
+        padding: 34px 0 70px;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 34px;
+        align-items: center;
+        min-height: calc(100vh - 132px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid #bae6fd;
+        background: #f0f9ff;
+        color: #075985;
+        font-weight: 800;
+        font-size: 13px;
+      }
+
+      h1 {
+        margin: 18px 0 18px;
+        font-size: clamp(44px, 7vw, 82px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.7;
+        margin: 0 0 28px;
+      }
+
+      .heroActions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .metricStrip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .miniMetric,
+      .panel,
+      .dataPanel,
+      .formPanel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+      }
+
+      .miniMetric {
+        padding: 16px;
+      }
+
+      .miniMetric strong {
+        display: block;
+        font-size: 25px;
+        margin-bottom: 4px;
+      }
+
+      .miniMetric span {
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .previewBoard {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(15, 118, 110, 0.1), transparent 55%),
+          #ffffff;
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+
+      .heroCopy {
+        padding: 22px 0;
+      }
+
+      .heroVisual {
+        display: grid;
+        gap: 14px;
+      }
+
+      .atelierPanel {
+        min-height: 280px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        background:
+          linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(19, 78, 74, 0.9)),
+          #0f172a;
+        box-shadow: 0 30px 80px rgba(2, 6, 23, 0.22);
+        padding: 24px;
+        color: #ffffff;
+      }
+
+      .atelierPanel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        background-size: 34px 34px;
+        opacity: 0.42;
+      }
+
+      .atelierContent {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .garmentSketch {
+        min-height: 210px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        display: grid;
+        place-items: center;
+      }
+
+      .garmentSketch svg {
+        width: min(220px, 80%);
+        height: auto;
+      }
+
+      .measureStack {
+        display: grid;
+        gap: 10px;
+      }
+
+      .measurePill {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .measurePill span {
+        color: #99f6e4;
+        font-weight: 800;
+      }
+
+      .previewHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 12px 20px;
+      }
+
+      .previewHeader span {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 13px;
+      }
+
+      .previewResult {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .sizeTile {
+        grid-row: span 2;
+        min-height: 290px;
+        padding: 26px;
+        border-radius: 8px;
+        background: var(--brand-dark);
+        color: #ffffff;
+        display: grid;
+        align-content: space-between;
+      }
+
+      .sizeTile span {
+        color: #99f6e4;
+        font-weight: 800;
+      }
+
+      .sizeTile strong {
+        font-size: 78px;
+        line-height: 1;
+      }
+
+      .previewCard {
+        min-height: 138px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        display: grid;
+        align-content: space-between;
+      }
+
+      .previewCard span,
+      .sourceText,
+      .hint,
+      .smallText {
+        color: var(--muted);
+      }
+
+      .previewCard strong {
+        font-size: 24px;
+      }
+
+      .sectionHead {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 22px;
+      }
+
+      .sectionHead h2 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .sectionHead p {
+        max-width: 580px;
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .finderLayout {
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .formPanel,
+      .resultPanel,
+      .guideGrid,
+      .methodGrid {
+        border-radius: 8px;
+      }
+
+      .formPanel {
+        padding: 22px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .formGroup {
+        display: grid;
+        gap: 8px;
+      }
+
+      label,
+      .labelText {
+        color: #344054;
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        border: 1px solid #d0d5dd;
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        padding: 13px 14px;
+        outline: none;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--brand);
+        box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+      }
+
+      .twoCol {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .segmented {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f2f4f7;
+      }
+
+      .segmented button {
+        border: 0;
+        min-height: 44px;
+        border-radius: 6px;
+        background: transparent;
+        color: #667085;
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .segmented button.active {
+        background: #ffffff;
+        color: var(--brand-dark);
+        box-shadow: 0 10px 28px rgba(16, 24, 40, 0.08);
+      }
+
+      .categoryGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .categoryButton {
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: #344054;
+        cursor: pointer;
+        font-weight: 800;
+        text-align: left;
+        padding: 12px;
+      }
+
+      .categoryButton.active {
+        border-color: var(--brand);
+        background: #ecfdf3;
+        color: var(--brand-dark);
+      }
+
+      .resultPanel {
+        min-height: 740px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+
+      .emptyState {
+        min-height: 690px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .emptyState h3 {
+        color: var(--ink);
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+
+      .resultHero {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .mainSize {
+        min-height: 230px;
+        padding: 24px;
+        border-radius: 8px;
+        background: var(--brand-dark);
+        color: #ffffff;
+        display: grid;
+        align-content: space-between;
+      }
+
+      .mainSize span {
+        color: #99f6e4;
+        font-weight: 800;
+      }
+
+      .mainSize strong {
+        font-size: 72px;
+        line-height: 1;
+      }
+
+      .summaryGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .summaryItem,
+      .feedbackItem,
+      .brandRow,
+      .guideCard,
+      .methodCard {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+
+      .summaryItem {
+        min-height: 110px;
+        padding: 16px;
+        display: grid;
+        align-content: space-between;
+      }
+
+      .summaryItem span {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 13px;
+      }
+
+      .summaryItem strong {
+        font-size: 22px;
+      }
+
+      .feedbackGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .feedbackItem {
+        padding: 15px;
+        line-height: 1.55;
+        color: #344054;
+      }
+
+      .feedbackItem strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 6px;
+      }
+
+      .brandRows {
+        display: grid;
+        gap: 10px;
+      }
+
+      .brandRow {
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr 0.9fr 0.8fr;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+      }
+
+      .brandRow span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+
+      .confidence {
+        height: 8px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: #eaecf0;
+      }
+
+      .confidence i {
+        display: block;
+        height: 100%;
+        background: var(--brand);
+      }
+
+      .guideGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .guideCard,
+      .methodCard {
+        padding: 18px;
+        box-shadow: 0 12px 36px rgba(16, 24, 40, 0.05);
+      }
+
+      .guideCard h3,
+      .methodCard h3 {
+        margin-bottom: 8px;
+      }
+
+      .guideCard p,
+      .methodCard p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .dataTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+        font-size: 14px;
+      }
+
+      .dataTable th,
+      .dataTable td {
+        padding: 10px 0;
+        border-top: 1px solid var(--line);
+        text-align: left;
+      }
+
+      .dataTable th {
+        color: #344054;
+        font-size: 12px;
+      }
+
+      .methodGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .footer {
+        padding: 36px 0 28px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+      }
+
+      .error {
+        border: 1px solid #fecdca;
+        background: #fffbfa;
+        color: var(--danger);
+        border-radius: 8px;
+        padding: 12px 14px;
+        font-weight: 800;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .finderLayout,
+        .resultHero,
+        .guideGrid,
+        .methodGrid {
+          grid-template-columns: 1fr;
+        }
+
+        .feedbackGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .app {
+          width: min(100% - 22px, 1240px);
+        }
+
+        .nav {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .navLinks {
+          overflow-x: auto;
+          justify-content: flex-start;
+        }
+
+        .metricStrip,
+        .previewResult,
+        .summaryGrid,
+        .brandRow {
+          grid-template-columns: 1fr;
+        }
+
+        .categoryGrid,
+        .twoCol,
+        .segmented {
+          grid-template-columns: 1fr;
+        }
+
+        .brandRow {
+          align-items: stretch;
+        }
+
+        .sectionHead {
+          display: grid;
+        }
+
+        h1 {
+          font-size: 44px;
+        }
+      }
+
+      /* Reference-inspired premium redesign */
+      body {
+        background: #ffffff;
+      }
+
+      .app {
+        width: 100%;
+        margin: 0;
+      }
+
+      .nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 68px;
+        margin: 0;
+        padding: 0 clamp(16px, 4vw, 42px);
+        border: 0;
+        border-bottom: 1px solid #e5e7eb;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .logo {
+        color: #111827;
+      }
+
+      .logoText small {
+        color: #6b7280;
+      }
+
+      .navLinks {
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .navLinks button {
+        color: #6b7280;
+        font-size: 0.88rem;
+      }
+
+      .navLinks button.active,
+      .navLinks button:hover {
+        background: #edf7f3;
+        color: #0f4c3a;
+      }
+
+      .primaryButton {
+        border-color: #0f4c3a;
+        background: #0f4c3a;
+        box-shadow: 0 8px 20px rgba(15, 76, 58, 0.24);
+      }
+
+      .secondaryButton {
+        border-color: rgba(255, 255, 255, 0.45);
+        background: transparent;
+        color: #ffffff;
+      }
+
+      .page {
+        padding: 88px clamp(16px, 4vw, 42px) 84px;
+      }
+
+      #home.page {
+        min-height: 100svh;
+        padding: 68px 0 0;
+        background: linear-gradient(145deg, #0a2e24 0%, #0f4c3a 52%, #1a7a5e 100%);
+        overflow: hidden;
+      }
+
+      #home.page::before {
+        content: "";
+        position: absolute;
+        inset: 68px 0 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          radial-gradient(ellipse 70% 60% at 15% 55%, rgba(245, 158, 11, 0.15), transparent 55%),
+          radial-gradient(ellipse 50% 50% at 85% 15%, rgba(255, 255, 255, 0.06), transparent 50%);
+        background-size: 44px 44px, 44px 44px, auto, auto;
+        pointer-events: none;
+      }
+
+      .hero {
+        position: relative;
+        z-index: 1;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: calc(100svh - 68px);
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .heroCopy {
+        max-width: 760px;
+      }
+
+      .eyebrow {
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.11);
+        color: #ffffff;
+      }
+
+      h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        color: #ffffff;
+        font-size: clamp(3rem, 8vw, 5.4rem);
+        line-height: 1.05;
+      }
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .heroActions {
+        justify-content: center;
+      }
+
+      .metricStrip {
+        width: min(720px, 100%);
+        margin: 38px auto 0;
+      }
+
+      .miniMetric {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        box-shadow: none;
+      }
+
+      .miniMetric strong {
+        color: #fcd34d;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      .miniMetric span {
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      .heroVisual {
+        width: min(780px, 100%);
+      }
+
+      .atelierPanel {
+        display: none;
+      }
+
+      .previewBoard {
+        border-color: rgba(255, 255, 255, 0.13);
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+      }
+
+      .previewHeader span,
+      .previewCard span,
+      .previewCard small {
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .previewCard {
+        border-color: rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .previewCard strong {
+        color: #ffffff;
+      }
+
+      .sizeTile {
+        background: linear-gradient(150deg, #3d2a1a, #7a5c3a, #9a7244);
+      }
+
+      #find.page,
+      #guide.page,
+      #about.page {
+        width: min(1120px, 100%);
+        margin: 0 auto;
+      }
+
+      #find.page {
+        background: #ffffff;
+      }
+
+      .sectionHead {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .sectionHead .eyebrow {
+        color: #0f4c3a;
+        background: #edf7f3;
+        border-color: #c6ede0;
+      }
+
+      .sectionHead h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        color: #111827;
+      }
+
+      .finderLayout {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+        gap: 40px;
+      }
+
+      .formPanel {
+        border-radius: 22px;
+        padding: clamp(24px, 4vw, 40px);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+
+      .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        background: transparent;
+        border: 0;
+        padding: 0;
+      }
+
+      .segmented button {
+        flex: 1;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 999px;
+        background: #ffffff;
+      }
+
+      .segmented button.active {
+        background: #0f4c3a;
+        color: #ffffff;
+      }
+
+      .categoryGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .categoryButton {
+        min-height: 78px;
+        display: grid;
+        place-items: center;
+        gap: 6px;
+        text-align: center;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        color: #6b7280;
+      }
+
+      .categoryButton span {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: #edf7f3;
+        color: #0f4c3a;
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+
+      .categoryButton:hover,
+      .categoryButton.active {
+        transform: translateY(-2px);
+        border-color: #0f4c3a;
+        background: #edf7f3;
+        color: #0f4c3a;
+        box-shadow: 0 8px 20px rgba(15, 76, 58, 0.1);
+      }
+
+      .resultPanel {
+        position: sticky;
+        top: 88px;
+        min-height: 520px;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+      }
+
+      .emptyState {
+        min-height: 480px;
+        border: 2px dashed #e5e7eb;
+        border-radius: 22px;
+        background: #f9fafb;
+      }
+
+      .resultHero {
+        grid-template-columns: 1fr;
+      }
+
+      .mainSize {
+        min-height: 260px;
+        text-align: center;
+        border-radius: 0;
+        background: linear-gradient(150deg, #0a2e24 0%, #0f4c3a 55%, #1a7a5e 100%);
+        justify-items: center;
+      }
+
+      .mainSize strong {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 5rem;
+        color: #fcd34d;
+      }
+
+      .summaryGrid,
+      .feedbackGrid,
+      .brandRows {
+        padding-inline: 4px;
+      }
+
+      .brandRow {
+        grid-template-columns: 1.1fr 0.65fr 1.25fr 0.8fr;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 980px) {
+        .finderLayout {
+          grid-template-columns: 1fr;
+        }
+
+        .resultPanel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav {
+          height: auto;
+          align-items: stretch;
+          padding-block: 10px;
+        }
+
+        .page {
+          padding-top: 108px;
+        }
+
+        #home.page {
+          padding-top: 84px;
+        }
+
+        .categoryGrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <nav class="nav">
+        <button class="logo" data-page="home">
+          <svg class="logoSvg" viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="logoGradient" x1="8" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2dd4bf" />
+                <stop offset="1" stop-color="#0f766e" />
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="54" height="54" rx="14" fill="url(#logoGradient)" />
+            <path d="M24 18h16l7 8-7 8v16H24V34l-7-8 7-8Z" fill="#ffffff" opacity="0.96" />
+            <path d="M25 22h14M29 30h18M29 38h10M29 46h14" stroke="#0f766e" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <span class="logoText">
+            <span>Smart Size Finder</span>
+            <small>Bangladesh Fit System</small>
+          </span>
+        </button>
+        <div class="navLinks" aria-label="Main navigation">
+          <button data-page="home" class="active">Home</button>
+          <button data-page="find">Find Your Size</button>
+          <button data-page="guide">Size Guide</button>
+          <button data-page="about">About</button>
+        </div>
+        <button class="primaryButton" data-page="find">Find Your Size</button>
+      </nav>
+
+      <main>
+        <section id="home" class="page active">
+          <div class="hero">
+            <div class="heroCopy">
+              <span class="eyebrow">Bangladesh sizing intelligence</span>
+              <h1>Smart Size Finder for confident clothing fit.</h1>
+              <p class="lead">
+                A premium size recommendation website for Bangladeshi shoppers, using height, weight, BMI, body type, and local brand size patterns.
+              </p>
+              <div class="heroActions">
+                <button class="primaryButton" data-page="find">Find Your Size</button>
+                <button class="secondaryButton" data-page="guide">View Size Guide</button>
+              </div>
+              <div class="metricStrip">
+                <div class="miniMetric"><strong>11</strong><span>Clothing categories</span></div>
+                <div class="miniMetric"><strong>BMI</strong><span>Auto body type logic</span></div>
+                <div class="miniMetric"><strong>38-48</strong><span>Panjabi length sizes</span></div>
+              </div>
+            </div>
+
+            <div class="heroVisual">
+              <div class="atelierPanel">
+                <div class="atelierContent">
+                  <div class="garmentSketch" aria-label="Panjabi measuring visual">
+                    <svg viewBox="0 0 220 240" role="img" aria-label="Panjabi measurement illustration">
+                      <path d="M78 28h64l28 34-24 23v118c0 7-5 12-12 12H86c-7 0-12-5-12-12V85L50 62l28-34Z" fill="#f8fafc" />
+                      <path d="M92 28c2 14 9 22 18 22s16-8 18-22" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" />
+                      <path d="M110 58v150M71 126h78M58 62h104M74 200h72" stroke="#14b8a6" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 8" />
+                      <text x="156" y="130" fill="#0f766e" font-size="18" font-weight="800">42"</text>
+                    </svg>
+                  </div>
+                  <div class="measureStack">
+                    <div class="measurePill"><strong>Panjabi Length</strong><span>42 inch</span></div>
+                    <div class="measurePill"><strong>BMI Profile</strong><span>Regular</span></div>
+                    <div class="measurePill"><strong>Fit Safety</strong><span>Chest checked</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="previewBoard">
+                <div class="previewHeader">
+                  <div>
+                    <strong>Recommendation Preview</strong>
+                    <span> Height + weight + garment type</span>
+                  </div>
+                  <span>Live model</span>
+                </div>
+                <div class="previewResult">
+                  <div class="sizeTile">
+                    <span>Panjabi Length Size</span>
+                    <strong>42</strong>
+                    <small>42 inch length · regular fit</small>
+                  </div>
+                  <div class="previewCard">
+                    <span>BMI</span>
+                    <strong>24.2</strong>
+                    <small>Healthy range</small>
+                  </div>
+                  <div class="previewCard">
+                    <span>Body Type</span>
+                    <strong>Regular</strong>
+                    <small>Balanced chest and length</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="find" class="page">
+          <div class="sectionHead">
+            <div>
+              <span class="eyebrow">Fit calculator</span>
+              <h2>Find Your Size</h2>
+              <p>Choose a clothing category, enter height and weight, then get BMI, body type, and brand-wise size recommendations.</p>
+            </div>
+          </div>
+
+          <div class="finderLayout">
+            <form id="fitForm" class="formPanel">
+              <div class="twoCol">
+                <div class="formGroup">
+                  <label for="feet">Height Feet</label>
+                  <input id="feet" type="number" min="4" max="7" value="5" />
+                </div>
+                <div class="formGroup">
+                  <label for="inches">Height Inches</label>
+                  <input id="inches" type="number" min="0" max="11.99" step="any" value="7" />
+                </div>
+              </div>
+
+              <div class="formGroup">
+                <label for="weight">Weight KG</label>
+                <input id="weight" type="number" min="30" max="180" value="70" />
+              </div>
+
+              <div class="formGroup">
+                <span class="labelText">Gender</span>
+                <div class="segmented">
+                  <button type="button" id="maleBtn" class="active">Male</button>
+                  <button type="button" id="femaleBtn">Female</button>
+                </div>
+              </div>
+
+              <select id="categorySelect" hidden aria-hidden="true"></select>
+
+              <div class="formGroup">
+                <span class="labelText">Popular Categories</span>
+                <div id="categoryGrid" class="categoryGrid"></div>
+              </div>
+
+              <button class="primaryButton" type="submit">Calculate Recommendation</button>
+              <div id="formError"></div>
+            </form>
+
+            <section id="resultPanel" class="resultPanel">
+              <div class="emptyState">
+                <div>
+                  <h3>Your recommendation is ready to calculate.</h3>
+                  <p class="smallText">The result will include size, BMI, body type, target measurements, and brand-wise matches.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="guide" class="page">
+          <div class="sectionHead">
+            <div>
+              <span class="eyebrow">Data coverage</span>
+              <h2>Size Guide</h2>
+              <p>Seed data includes public measurement patterns and availability ranges from Bangladeshi fashion brands and retailers.</p>
+            </div>
+            <button class="primaryButton" data-page="find">Find Your Size</button>
+          </div>
+          <div id="guideGrid" class="guideGrid"></div>
+        </section>
+
+        <section id="about" class="page">
+          <div class="sectionHead">
+            <div>
+              <span class="eyebrow">Model method</span>
+              <h2>How the recommendation works</h2>
+              <p>The tool uses transparent fit rules so the recommendation is explainable and easy to tune with more brand data.</p>
+            </div>
+          </div>
+          <div class="methodGrid">
+            <article class="methodCard">
+              <h3>BMI Calculation</h3>
+              <p>Height is converted to meters and BMI is calculated from weight in kilograms.</p>
+            </article>
+            <article class="methodCard">
+              <h3>Body Type</h3>
+              <p>BMI and height classify the profile as Slim, Regular, or Plus-size.</p>
+            </article>
+            <article class="methodCard">
+              <h3>Target Fit</h3>
+              <p>The model estimates chest, waist, hip, and garment length targets based on category.</p>
+            </article>
+            <article class="methodCard">
+              <h3>Brand Match</h3>
+              <p>Each available size is scored against target measurements and ranked by confidence.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <strong>Smart Size Finder</strong>
+        <span> · Offline demo website · Replace or expand the dataset when you add confirmed brand charts.</span>
+      </footer>
+    </div>
+
+    <script>
+      const categories = {
+        male: [
+          "Panjabi",
+          "T-Shirt",
+          "Shirt",
+          "Polo Shirt",
+          "Fatua",
+          "Pant / Trouser",
+          "Pajama"
+        ],
+        female: [
+          "Kurti",
+          "Salwar Kameez",
+          "Kameez",
+          "T-Shirt",
+          "Shirt",
+          "Pant / Trouser",
+          "Palazzo"
+        ]
+      };
+
+      const categoryIcons = {
+        "Panjabi": "P",
+        "T-Shirt": "T",
+        "Shirt": "S",
+        "Polo Shirt": "PS",
+        "Fatua": "F",
+        "Pant / Trouser": "PT",
+        "Pajama": "PJ",
+        "Kurti": "K",
+        "Salwar Kameez": "SK",
+        "Kameez": "KM",
+        "Palazzo": "PL"
+      };
+
+      const charts = [
+        {
+          brand: "Feel Tex",
+          gender: "male",
+          category: "Panjabi",
+          fit: "Regular",
+          source: "feeltex.com.bd",
+          sizes: [
+            { label: "38", chest: 40, length: 38, shoulder: 16.5 },
+            { label: "40", chest: 42, length: 40, shoulder: 17 },
+            { label: "42", chest: 44, length: 42, shoulder: 17.5 },
+            { label: "44", chest: 46, length: 44, shoulder: 18 },
+            { label: "46", chest: 48, length: 46, shoulder: 19 }
+          ]
+        },
+        {
+          brand: "Siwak",
+          gender: "male",
+          category: "Panjabi",
+          fit: "Regular",
+          source: "siwaklifestyle.com",
+          sizes: [
+            { label: "38", chest: 40, length: 38 },
+            { label: "40", chest: 42, length: 40 },
+            { label: "42", chest: 44, length: 42 },
+            { label: "44", chest: 46, length: 44 },
+            { label: "46", chest: 48, length: 46 },
+            { label: "48", chest: 50, length: 48 }
+          ]
+        },
+        {
+          brand: "Le Reve",
+          gender: "male",
+          category: "Panjabi",
+          fit: "Slim",
+          source: "lerevecraze.com",
+          sizes: [
+            { label: "40", chest: 39, length: 40, shoulder: 17 },
+            { label: "42", chest: 41, length: 42, shoulder: 17.5 },
+            { label: "44", chest: 43, length: 44, shoulder: 18.5 },
+            { label: "46", chest: 46, length: 46, shoulder: 19.5 },
+            { label: "48", chest: 49, length: 48, shoulder: 20.5 }
+          ]
+        },
+        {
+          brand: "Dorjibari",
+          gender: "unisex",
+          category: "T-Shirt",
+          fit: "Regular",
+          source: "dorjibari.com.bd",
+          sizes: [
+            { label: "M", chest: 39.5, length: 26.75, shoulder: 16 },
+            { label: "L", chest: 41.5, length: 27.75, shoulder: 17 },
+            { label: "XL", chest: 43.5, length: 28.75, shoulder: 18 },
+            { label: "XXL", chest: 45.5, length: 29.75, shoulder: 19 }
+          ]
+        },
+        {
+          brand: "Dressen",
+          gender: "unisex",
+          category: "T-Shirt",
+          fit: "Regular",
+          source: "dressenbd.com",
+          sizes: [
+            { label: "S", chest: 38, length: 27 },
+            { label: "M", chest: 40, length: 28 },
+            { label: "L", chest: 42, length: 29 },
+            { label: "XL", chest: 44, length: 30 },
+            { label: "XXL", chest: 46, length: 31 }
+          ]
+        },
+        {
+          brand: "KORAS",
+          gender: "male",
+          category: "Shirt",
+          fit: "Regular",
+          source: "korasbd.com",
+          sizes: [
+            { label: "S", chest: 39, length: 28, shoulder: 16.5 },
+            { label: "M", chest: 41, length: 29, shoulder: 17.5 },
+            { label: "L", chest: 43, length: 30, shoulder: 18.5 },
+            { label: "XL", chest: 45, length: 31, shoulder: 19.5 },
+            { label: "XXL", chest: 47, length: 32, shoulder: 20.5 }
+          ]
+        },
+        {
+          brand: "Dressen",
+          gender: "unisex",
+          category: "Shirt",
+          fit: "Regular",
+          source: "dressenbd.com",
+          sizes: [
+            { label: "S", chest: 39, length: 28 },
+            { label: "M", chest: 41, length: 29 },
+            { label: "L", chest: 43, length: 30 },
+            { label: "XL", chest: 45, length: 31 },
+            { label: "XXL", chest: 47, length: 32 }
+          ]
+        },
+        {
+          brand: "Dorjibari",
+          gender: "male",
+          category: "Polo Shirt",
+          fit: "Regular",
+          source: "dorjibari.com.bd",
+          sizes: [
+            { label: "M", chest: 40, length: 27 },
+            { label: "L", chest: 42, length: 28 },
+            { label: "XL", chest: 44, length: 29 },
+            { label: "XXL", chest: 46, length: 30 }
+          ]
+        },
+        {
+          brand: "Fhore",
+          gender: "male",
+          category: "Fatua",
+          fit: "Regular",
+          source: "fhore.com",
+          sizes: [
+            { label: "S", chest: 38, length: 29 },
+            { label: "M", chest: 40, length: 30 },
+            { label: "L", chest: 42, length: 31 },
+            { label: "XL", chest: 44, length: 32 },
+            { label: "XXL", chest: 46, length: 33 }
+          ]
+        },
+        {
+          brand: "Country Boy",
+          gender: "male",
+          category: "Pant / Trouser",
+          fit: "Regular",
+          source: "countryboy.com.bd",
+          sizes: [
+            { label: "30", waist: 30, hip: 38, length: 40 },
+            { label: "32", waist: 32, hip: 40, length: 41 },
+            { label: "34", waist: 34, hip: 42, length: 41.5 },
+            { label: "36", waist: 36, hip: 44, length: 42 },
+            { label: "38", waist: 38, hip: 46, length: 42.5 }
+          ]
+        },
+        {
+          brand: "Fhore",
+          gender: "male",
+          category: "Pajama",
+          fit: "Regular",
+          source: "fhore.com",
+          sizes: [
+            { label: "S", waist: 30, hip: 39, length: 38 },
+            { label: "M", waist: 32, hip: 41, length: 39 },
+            { label: "L", waist: 34, hip: 43, length: 40 },
+            { label: "XL", waist: 36, hip: 45, length: 41 },
+            { label: "XXL", waist: 38, hip: 47, length: 42 }
+          ]
+        },
+        {
+          brand: "Hamara Style",
+          gender: "female",
+          category: "Kurti",
+          fit: "Regular",
+          source: "hamarastyle.com",
+          sizes: [
+            { label: "S", chest: 37, waist: 35, hip: 37, length: 36.5, shoulder: 14 },
+            { label: "M", chest: 38, waist: 36, hip: 41, length: 35, shoulder: 14 },
+            { label: "L/XL", chest: 41, waist: 40, hip: 43, length: 34, shoulder: 16 },
+            { label: "XL", chest: 46, waist: 43, hip: 45, length: 36, shoulder: 16 }
+          ]
+        },
+        {
+          brand: "Fhore",
+          gender: "female",
+          category: "Kameez",
+          fit: "Regular",
+          source: "fhore.com",
+          sizes: [
+            { label: "S", chest: 36, waist: 34, hip: 38, length: 42 },
+            { label: "M", chest: 38, waist: 36, hip: 40, length: 43 },
+            { label: "L", chest: 40, waist: 38, hip: 42, length: 44 },
+            { label: "XL", chest: 42, waist: 40, hip: 44, length: 45 },
+            { label: "XXL", chest: 44, waist: 42, hip: 46, length: 46 }
+          ]
+        },
+        {
+          brand: "Le Reve",
+          gender: "female",
+          category: "Salwar Kameez",
+          fit: "Regular",
+          source: "lerevecraze.com",
+          sizes: [
+            { label: "S", chest: 36, waist: 34, hip: 38, length: 42 },
+            { label: "M", chest: 38, waist: 36, hip: 40, length: 43 },
+            { label: "L", chest: 40, waist: 38, hip: 42, length: 44 },
+            { label: "XL", chest: 42, waist: 40, hip: 44, length: 45 },
+            { label: "XXL", chest: 44, waist: 42, hip: 46, length: 46 }
+          ]
+        },
+        {
+          brand: "ShopKameez",
+          gender: "female",
+          category: "Salwar Kameez",
+          fit: "Regular",
+          source: "shopkameez.com",
+          sizes: [
+            { label: "S/36", chest: 36, waist: 34, hip: 38, length: 42 },
+            { label: "M/38", chest: 38, waist: 36, hip: 40, length: 43 },
+            { label: "L/40", chest: 40, waist: 38, hip: 42, length: 44 },
+            { label: "XL/42", chest: 42, waist: 40, hip: 44, length: 45 },
+            { label: "XXL/44", chest: 44, waist: 42, hip: 46, length: 46 }
+          ]
+        },
+        {
+          brand: "Anokherang",
+          gender: "female",
+          category: "Palazzo",
+          fit: "Regular",
+          source: "anokherang.com",
+          sizes: [
+            { label: "S", waist: 28, hip: 40, length: 38 },
+            { label: "M", waist: 30, hip: 42, length: 39 },
+            { label: "L", waist: 32, hip: 44, length: 40 },
+            { label: "XL", waist: 34, hip: 46, length: 41 },
+            { label: "XXL", waist: 36, hip: 48, length: 42 }
+          ]
+        },
+        {
+          brand: "Affifa",
+          gender: "female",
+          category: "Pant / Trouser",
+          fit: "Regular",
+          source: "affifa.com.bd",
+          sizes: [
+            { label: "S", waist: 28, hip: 38, length: 37 },
+            { label: "M", waist: 30, hip: 40, length: 38 },
+            { label: "L", waist: 32, hip: 42, length: 39 },
+            { label: "XL", waist: 34, hip: 44, length: 40 },
+            { label: "XXL", waist: 36, hip: 46, length: 41 }
+          ]
+        }
+      ];
+
+      const ruleBook = {
+        "Panjabi": { type: "upper", ease: 4.2, lengthRatio: 0.63, chestWeight: 0.28, lengthWeight: 0.72, lengthBased: true },
+        "T-Shirt": { type: "upper", ease: 3.0, lengthRatio: 0.42, chestWeight: 0.78, lengthWeight: 0.22 },
+        "Shirt": { type: "upper", ease: 3.5, lengthRatio: 0.44, chestWeight: 0.76, lengthWeight: 0.24 },
+        "Polo Shirt": { type: "upper", ease: 3.1, lengthRatio: 0.42, chestWeight: 0.78, lengthWeight: 0.22 },
+        "Fatua": { type: "upper", ease: 3.8, lengthRatio: 0.48, chestWeight: 0.72, lengthWeight: 0.28 },
+        "Kurti": { type: "set", ease: 3.6, lengthRatio: 0.56, chestWeight: 0.55, waistWeight: 0.18, hipWeight: 0.12, lengthWeight: 0.15 },
+        "Kameez": { type: "set", ease: 3.8, lengthRatio: 0.68, chestWeight: 0.5, waistWeight: 0.2, hipWeight: 0.12, lengthWeight: 0.18 },
+        "Salwar Kameez": { type: "set", ease: 3.8, lengthRatio: 0.68, chestWeight: 0.5, waistWeight: 0.2, hipWeight: 0.12, lengthWeight: 0.18 },
+        "Pant / Trouser": { type: "bottom", waistEase: 1.2, hipEase: 2.0, lengthRatio: 0.61, waistWeight: 0.52, hipWeight: 0.28, lengthWeight: 0.2 },
+        "Pajama": { type: "bottom", waistEase: 1.8, hipEase: 2.8, lengthRatio: 0.6, waistWeight: 0.48, hipWeight: 0.3, lengthWeight: 0.22 },
+        "Palazzo": { type: "bottom", waistEase: 1.8, hipEase: 3.0, lengthRatio: 0.61, waistWeight: 0.45, hipWeight: 0.35, lengthWeight: 0.2 }
+      };
+
+      let gender = "male";
+      let selectedCategory = "Panjabi";
+
+      const navButtons = document.querySelectorAll("[data-page]");
+      const pages = document.querySelectorAll(".page");
+      const maleBtn = document.getElementById("maleBtn");
+      const femaleBtn = document.getElementById("femaleBtn");
+      const categorySelect = document.getElementById("categorySelect");
+      const categoryGrid = document.getElementById("categoryGrid");
+      const resultPanel = document.getElementById("resultPanel");
+      const formError = document.getElementById("formError");
+      const guideGrid = document.getElementById("guideGrid");
+
+      function showPage(pageId) {
+        pages.forEach((page) => page.classList.toggle("active", page.id === pageId));
+        document.querySelectorAll(".navLinks [data-page]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.page === pageId);
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function setGender(nextGender) {
+        gender = nextGender;
+        selectedCategory = categories[gender][0];
+        maleBtn.classList.toggle("active", gender === "male");
+        femaleBtn.classList.toggle("active", gender === "female");
+        renderCategories();
+      }
+
+      function renderCategories() {
+        categorySelect.innerHTML = categories[gender]
+          .map((category) => `<option value="${category}">${category}</option>`)
+          .join("");
+        categorySelect.value = selectedCategory;
+
+        categoryGrid.innerHTML = categories[gender]
+          .map(
+            (category) =>
+              `<button class="categoryButton ${category === selectedCategory ? "active" : ""}" type="button" data-category="${category}"><span>${categoryIcons[category] || "SS"}</span>${category}</button>`
+          )
+          .join("");
+
+        categoryGrid.querySelectorAll("[data-category]").forEach((button) => {
+          button.addEventListener("click", () => {
+            selectedCategory = button.dataset.category;
+            categorySelect.value = selectedCategory;
+            renderCategories();
+          });
+        });
+      }
+
+      function bmiCategory(bmi) {
+        if (bmi < 18.5) return "Underweight";
+        if (bmi < 25) return "Healthy range";
+        if (bmi < 30) return "Overweight range";
+        return "Obesity range";
+      }
+
+      function bodyType(bmi, heightInches) {
+        const compactHeight = gender === "female" ? 60 : 64;
+        const tallHeight = gender === "female" ? 66 : 70;
+        if (bmi < 18.5 || (bmi < 20 && heightInches >= tallHeight)) return "Slim";
+        if (bmi >= 27.5 || (bmi >= 25 && heightInches <= compactHeight)) return "Plus-size";
+        return "Regular";
+      }
+
+      function estimateBody(heightInches, weightKg) {
+        if (gender === "female") {
+          return {
+            chest: 0.33 * heightInches + 0.21 * weightKg,
+            waist: 0.27 * heightInches + 0.16 * weightKg,
+            hip: 0.34 * heightInches + 0.2 * weightKg
+          };
+        }
+
+        return {
+          chest: 0.36 * heightInches + 0.22 * weightKg,
+          waist: 0.3 * heightInches + 0.17 * weightKg,
+          hip: 0.32 * heightInches + 0.18 * weightKg
+        };
+      }
+
+      function adjustmentFor(profile) {
+        if (profile === "Slim") return { chest: -1.1, waist: -0.8, hip: -0.8, length: -0.25, guidance: "Cleaner fits should work well. If you prefer relaxed comfort, choose one size up." };
+        if (profile === "Plus-size") return { chest: 2, waist: 1.6, hip: 1.8, length: 0.4, guidance: "If you are between two sizes, choose the larger option for comfort." };
+        return { chest: 0, waist: 0, hip: 0, length: 0, guidance: "Regular fit should feel balanced without too much extra fabric." };
+      }
+
+      function nearestPanjabiLength(rawLength) {
+        const panjabiSizes = [38, 40, 42, 44, 46, 48];
+        return panjabiSizes.reduce((best, size) => {
+          return Math.abs(size - rawLength) < Math.abs(best - rawLength) ? size : best;
+        }, panjabiSizes[0]);
+      }
+
+      function scoreSize(size, target, rule) {
+        let score = 0;
+        const parts = [];
+
+        if (Number.isFinite(size.chest)) {
+          const delta = size.chest - target.chest;
+          score += Math.abs(delta) * (rule.chestWeight || 0.5);
+          if (delta < -0.5) score += Math.abs(delta) * 1.8;
+          parts.push(`Chest ${size.chest}"`);
+        }
+
+        if (Number.isFinite(size.waist)) {
+          const delta = size.waist - target.waist;
+          score += Math.abs(delta) * (rule.waistWeight || 0.45);
+          if (delta < -0.25) score += Math.abs(delta) * 1.7;
+          parts.push(`Waist ${size.waist}"`);
+        }
+
+        if (Number.isFinite(size.hip)) {
+          const delta = size.hip - target.hip;
+          score += Math.abs(delta) * (rule.hipWeight || 0.25);
+          if (delta < -0.5) score += Math.abs(delta) * 1.2;
+          parts.push(`Hip ${size.hip}"`);
+        }
+
+        if (Number.isFinite(size.length)) {
+          const delta = size.length - target.length;
+          score += Math.abs(delta) * (rule.lengthWeight || 0.2);
+          if (delta < -1) score += Math.abs(delta) * 0.7;
+          parts.push(`Length ${size.length}"`);
+        }
+
+        return { score, parts };
+      }
+
+      function calculateRecommendation(event) {
+        event.preventDefault();
+        formError.innerHTML = "";
+
+        const feet = Number(document.getElementById("feet").value);
+        const inches = Number(document.getElementById("inches").value);
+        const weightKg = Number(document.getElementById("weight").value);
+        const heightInches = feet * 12 + inches;
+
+        if (!heightInches || heightInches < 48 || heightInches > 84 || !weightKg || weightKg < 30 || weightKg > 180) {
+          formError.innerHTML = '<div class="error">Please enter a valid height and weight.</div>';
+          return;
+        }
+
+        const heightMeters = heightInches * 0.0254;
+        const bmi = weightKg / (heightMeters * heightMeters);
+        const profile = bodyType(bmi, heightInches);
+        const adjust = adjustmentFor(profile);
+        const rule = ruleBook[selectedCategory];
+        const estimated = estimateBody(heightInches, weightKg);
+
+        const target = {
+          chest: estimated.chest + (rule.ease || 0) + adjust.chest,
+          waist: estimated.waist + (rule.waistEase || 0) + adjust.waist,
+          hip: estimated.hip + (rule.hipEase || 0) + adjust.hip,
+          length: heightInches * rule.lengthRatio + adjust.length
+        };
+
+        if (rule.lengthBased) {
+          target.length = nearestPanjabiLength(target.length);
+        }
+
+        const matchedCharts = charts.filter((chart) => {
+          const genderMatch = chart.gender === gender || chart.gender === "unisex";
+          return genderMatch && chart.category === selectedCategory;
+        });
+
+        if (!matchedCharts.length) {
+          formError.innerHTML = '<div class="error">No chart is available for this category yet.</div>';
+          return;
+        }
+
+        const matches = matchedCharts
+          .map((chart) => {
+            const ranked = chart.sizes
+              .map((size) => {
+                const scored = scoreSize(size, target, rule);
+                return { ...size, score: scored.score, measurementText: scored.parts.join(" · ") };
+              })
+              .sort((a, b) => a.score - b.score);
+
+            const best = ranked[0];
+            const confidence = Math.max(62, Math.min(97, Math.round(97 - best.score * 7)));
+            return { chart, best, confidence };
+          })
+          .sort((a, b) => b.confidence - a.confidence);
+
+        renderResult({ bmi, profile, adjust, target, matches, heightInches, weightKg });
+      }
+
+      function targetText(target, rule) {
+        if (rule.lengthBased) {
+          return `Length size ${target.length}" · Chest target ${target.chest.toFixed(1)}"`;
+        }
+
+        if (rule.type === "bottom") {
+          return `Waist ${target.waist.toFixed(1)}" · Hip ${target.hip.toFixed(1)}" · Length ${target.length.toFixed(1)}"`;
+        }
+
+        if (rule.type === "set") {
+          return `Chest ${target.chest.toFixed(1)}" · Waist ${target.waist.toFixed(1)}" · Length ${target.length.toFixed(1)}"`;
+        }
+
+        return `Chest ${target.chest.toFixed(1)}" · Length ${target.length.toFixed(1)}"`;
+      }
+
+      function renderResult(model) {
+        const top = model.matches[0];
+        const rule = ruleBook[selectedCategory];
+        const heightCm = (model.heightInches * 2.54).toFixed(1);
+        const sizeHeading = rule.lengthBased ? "Panjabi Length Size" : "Best Size";
+        const sizeCaption = rule.lengthBased ? `${top.best.label} inch length · ${top.chart.fit} fit` : `${top.chart.brand} · ${top.chart.fit} fit · ${top.confidence}% confidence`;
+        const recommendationLabel = rule.lengthBased ? "Length size" : "Recommended size";
+
+        resultPanel.innerHTML = `
+          <div class="resultHero">
+            <div class="mainSize">
+              <span>${sizeHeading}</span>
+              <strong>${top.best.label}</strong>
+              <small>${sizeCaption}</small>
+            </div>
+            <div class="summaryGrid">
+              <div class="summaryItem"><span>BMI</span><strong>${model.bmi.toFixed(1)}</strong><small>${bmiCategory(model.bmi)}</small></div>
+              <div class="summaryItem"><span>Body Type</span><strong>${model.profile}</strong><small>${selectedCategory}</small></div>
+              <div class="summaryItem"><span>Height</span><strong>${model.heightInches}"</strong><small>${heightCm} cm</small></div>
+              <div class="summaryItem"><span>Target Fit</span><strong>${targetText(model.target, rule)}</strong></div>
+            </div>
+          </div>
+
+          <div class="feedbackGrid">
+            <div class="feedbackItem"><strong>BMI Insight</strong>Your BMI is ${model.bmi.toFixed(1)}, which is in the ${bmiCategory(model.bmi).toLowerCase()}.</div>
+            <div class="feedbackItem"><strong>Fit Adjustment</strong>${model.adjust.guidance}</div>
+            <div class="feedbackItem"><strong>Category Logic</strong>${selectedCategory} is matched using ${rule.lengthBased ? "panjabi length first, then chest safety" : rule.type === "bottom" ? "waist, hip, and length" : rule.type === "set" ? "chest, waist, hip, and length" : "chest and length"} scoring.</div>
+          </div>
+
+          <div class="sectionHead" style="margin-top: 6px;">
+            <div>
+              <h2 style="font-size: 26px;">Brand Matches</h2>
+              <p>Ranked by measurement closeness and body type adjustment.</p>
+            </div>
+          </div>
+
+          <div class="brandRows">
+            ${model.matches
+              .map(
+                (item) => `
+                <article class="brandRow">
+                  <div><strong>${item.chart.brand}</strong><span>${item.chart.fit} fit · ${item.chart.source}</span></div>
+                  <div><strong>${item.best.label}</strong><span>${recommendationLabel}</span></div>
+                  <div><strong>${item.best.measurementText}</strong><span>Garment measurements</span></div>
+                  <div><strong>${item.confidence}%</strong><span>Confidence</span><div class="confidence"><i style="width:${item.confidence}%"></i></div></div>
+                </article>`
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderGuide() {
+        const grouped = [...new Set(charts.map((chart) => chart.category))].map((category) => ({
+          category,
+          charts: charts.filter((chart) => chart.category === category)
+        }));
+
+        guideGrid.innerHTML = grouped
+          .map(
+            (group) => `
+            <article class="guideCard">
+              <h3>${group.category}</h3>
+              <p>${group.charts.length} chart source${group.charts.length > 1 ? "s" : ""} included.</p>
+              <table class="dataTable">
+                <thead><tr><th>Brand</th><th>Gender</th><th>Fit</th></tr></thead>
+                <tbody>
+                  ${group.charts
+                    .map((chart) => `<tr><td>${chart.brand}</td><td>${chart.gender}</td><td>${chart.fit}</td></tr>`)
+                    .join("")}
+                </tbody>
+              </table>
+            </article>`
+          )
+          .join("");
+      }
+
+      navButtons.forEach((button) => {
+        button.addEventListener("click", () => showPage(button.dataset.page));
+      });
+
+      maleBtn.addEventListener("click", () => setGender("male"));
+      femaleBtn.addEventListener("click", () => setGender("female"));
+      categorySelect.addEventListener("change", (event) => {
+        selectedCategory = event.target.value;
+        renderCategories();
+      });
+
+      document.getElementById("fitForm").addEventListener("submit", calculateRecommendation);
+      renderCategories();
+      renderGuide();
+
+      if ("serviceWorker" in navigator && location.protocol !== "file:") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
