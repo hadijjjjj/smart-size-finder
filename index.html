@@ -1121,6 +1121,430 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
+      /* Final polish: crisper text, real placeholders, and refined motion */
+      :root {
+        --ink: #0f172a;
+        --muted: #475467;
+        --line: #d0d5dd;
+        --shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      body,
+      button,
+      input,
+      select {
+        color: var(--ink);
+      }
+
+      p,
+      small,
+      .lead,
+      .smallText,
+      .miniMetric span,
+      .summaryItem span,
+      .brandRow span,
+      .guideCard p,
+      .methodCard p,
+      .sectionHead p {
+        color: var(--muted);
+        opacity: 1;
+      }
+
+      #home .lead,
+      #home .miniMetric span,
+      #home .previewHeader span,
+      #home .previewCard span,
+      #home .previewCard small {
+        color: #e2e8f0;
+      }
+
+      .navLinks button {
+        color: #374151;
+      }
+
+      input::placeholder {
+        color: #667085;
+        font-weight: 700;
+        opacity: 1;
+      }
+
+      .footer {
+        display: none;
+      }
+
+      .page.active {
+        animation: pageIn 520ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+      }
+
+      .page.active .heroCopy,
+      .page.active .heroVisual,
+      .page.active .sectionHead,
+      .page.active .formPanel,
+      .page.active .resultPanel,
+      .page.active .guideCard,
+      .page.active .methodCard {
+        animation: riseIn 620ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+      }
+
+      .page.active .heroVisual,
+      .page.active .resultPanel {
+        animation-delay: 90ms;
+      }
+
+      .page.active .guideCard:nth-child(2),
+      .page.active .methodCard:nth-child(2) {
+        animation-delay: 70ms;
+      }
+
+      .page.active .guideCard:nth-child(3),
+      .page.active .methodCard:nth-child(3) {
+        animation-delay: 120ms;
+      }
+
+      .page.active .guideCard:nth-child(4),
+      .page.active .methodCard:nth-child(4) {
+        animation-delay: 170ms;
+      }
+
+      .primaryButton,
+      .secondaryButton,
+      .navLinks button,
+      .categoryButton,
+      .guideCard,
+      .methodCard,
+      .brandRow,
+      .miniMetric,
+      .previewCard {
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      }
+
+      .primaryButton:hover,
+      .secondaryButton:hover,
+      .guideCard:hover,
+      .methodCard:hover,
+      .brandRow:hover,
+      .miniMetric:hover,
+      .previewCard:hover {
+        transform: translateY(-2px);
+      }
+
+      .primaryButton:hover {
+        box-shadow: 0 14px 28px rgba(15, 76, 58, 0.28);
+      }
+
+      .guideCard:hover,
+      .methodCard:hover,
+      .brandRow:hover {
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
+      }
+
+      .categoryButton.active {
+        box-shadow: 0 12px 26px rgba(15, 76, 58, 0.12);
+      }
+
+      .previewBoard {
+        animation: floatPanel 4.8s ease-in-out infinite;
+      }
+
+      @keyframes pageIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes riseIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes floatPanel {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 1ms !important;
+        }
+      }
+
+      /* High-contrast kinetic finish */
+      :root {
+        font-family: Arial, Helvetica, "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        font-family: Arial, Helvetica, "Segoe UI", system-ui, sans-serif;
+        font-weight: 500;
+      }
+
+      h1,
+      h2,
+      h3,
+      strong,
+      button,
+      label,
+      .labelText,
+      .logoText,
+      .mainSize strong,
+      .miniMetric strong {
+        font-family: Arial, Helvetica, "Segoe UI", system-ui, sans-serif;
+        color: #0b1220;
+        font-weight: 900;
+        -webkit-font-smoothing: subpixel-antialiased;
+        text-shadow: none;
+      }
+
+      #home h1,
+      #home h2,
+      #home h3,
+      #home strong,
+      #home button,
+      #home .logoText,
+      #home .mainSize strong,
+      #home .miniMetric strong {
+        color: #ffffff;
+      }
+
+      h1 {
+        letter-spacing: 0;
+        line-height: 0.96;
+      }
+
+      h2 {
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      p,
+      span,
+      small,
+      td,
+      th,
+      input,
+      select {
+        text-shadow: none;
+        -webkit-font-smoothing: subpixel-antialiased;
+      }
+
+      .lead,
+      .sectionHead p,
+      .smallText,
+      .guideCard p,
+      .methodCard p,
+      .feedbackItem,
+      .brandRow span,
+      .summaryItem span,
+      .miniMetric span {
+        color: #263244;
+        font-weight: 650;
+      }
+
+      #home .lead,
+      #home .miniMetric span,
+      #home .previewHeader span,
+      #home .previewCard span,
+      #home .previewCard small {
+        color: #f8fafc;
+      }
+
+      input,
+      select {
+        color: #0b1220;
+        font-weight: 800;
+      }
+
+      input::placeholder {
+        color: #526071;
+        font-weight: 800;
+      }
+
+      .nav {
+        backdrop-filter: none;
+      }
+
+      #home.page {
+        position: relative;
+        background:
+          radial-gradient(circle at var(--mx, 50%) var(--my, 30%), rgba(255, 255, 255, 0.16), transparent 22rem),
+          linear-gradient(145deg, #061713 0%, #0b3a2d 48%, #10614b 100%);
+      }
+
+      #home.page::after {
+        content: "DIGITAL FIT  DIGITAL FIT  DIGITAL FIT";
+        position: absolute;
+        left: -4vw;
+        right: -4vw;
+        bottom: 3vh;
+        z-index: 0;
+        color: rgba(255, 255, 255, 0.055);
+        font-size: clamp(4rem, 15vw, 13rem);
+        font-weight: 900;
+        line-height: 0.8;
+        white-space: nowrap;
+        pointer-events: none;
+        animation: marqueeText 18s linear infinite;
+      }
+
+      .heroCopy,
+      .heroVisual,
+      .sectionHead,
+      .formPanel,
+      .resultPanel,
+      .guideCard,
+      .methodCard,
+      .brandRow,
+      .categoryButton {
+        will-change: opacity, transform, clip-path;
+      }
+
+      .reveal-ready {
+        opacity: 0;
+        transform: translateY(26px);
+        clip-path: inset(0 0 14% 0);
+      }
+
+      .reveal-ready.is-visible {
+        opacity: 1;
+        transform: none;
+        clip-path: inset(0 0 0 0);
+        transition:
+          opacity 720ms cubic-bezier(0.19, 1, 0.22, 1),
+          transform 720ms cubic-bezier(0.19, 1, 0.22, 1),
+          clip-path 720ms cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .page.active .heroCopy,
+      .page.active .heroVisual,
+      .page.active .sectionHead,
+      .page.active .formPanel,
+      .page.active .resultPanel,
+      .page.active .guideCard,
+      .page.active .methodCard {
+        animation: crispReveal 760ms cubic-bezier(0.19, 1, 0.22, 1) both;
+      }
+
+      .previewBoard {
+        position: relative;
+        overflow: hidden;
+        animation: panelPulse 5.2s ease-in-out infinite;
+        transform: translateZ(0);
+      }
+
+      .previewBoard::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, transparent 70%);
+        transform: translateX(-120%);
+        animation: glassSweep 5.8s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+        pointer-events: none;
+      }
+
+      .categoryButton:hover,
+      .primaryButton:hover,
+      .secondaryButton:hover {
+        transform: translateY(-3px) scale(1.01);
+      }
+
+      @keyframes crispReveal {
+        from {
+          opacity: 0;
+          transform: translateY(28px) scale(0.985);
+          clip-path: inset(0 0 18% 0);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          clip-path: inset(0 0 0 0);
+        }
+      }
+
+      @keyframes panelPulse {
+        0%,
+        100% {
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+        }
+        50% {
+          box-shadow: 0 30px 86px rgba(20, 184, 166, 0.2);
+        }
+      }
+
+      @keyframes glassSweep {
+        0%,
+        42% {
+          transform: translateX(-120%);
+        }
+        70%,
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      @keyframes marqueeText {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-28%);
+        }
+      }
+
+      .heroCopy,
+      .heroVisual,
+      .sectionHead,
+      .formPanel,
+      .resultPanel,
+      .guideCard,
+      .methodCard,
+      .brandRow,
+      .categoryButton,
+      .previewBoard {
+        will-change: auto;
+      }
+
+      .previewBoard {
+        transform: none;
+      }
+
+      #find .mainSize strong {
+        color: #facc15;
+      }
+
+      #find .mainSize span {
+        color: #ccfbf1;
+      }
+
+      #find .mainSize small {
+        color: #ffffff;
+        font-weight: 800;
+      }
     </style>
   </head>
   <body>
@@ -1234,17 +1658,17 @@
               <div class="twoCol">
                 <div class="formGroup">
                   <label for="feet">Height Feet</label>
-                  <input id="feet" type="number" min="4" max="7" value="5" />
+                  <input id="feet" type="number" min="4" max="7" placeholder="5 feet" />
                 </div>
                 <div class="formGroup">
                   <label for="inches">Height Inches</label>
-                  <input id="inches" type="number" min="0" max="11.99" step="any" value="7" />
+                  <input id="inches" type="number" min="0" max="11.99" step="any" placeholder="7 inches" />
                 </div>
               </div>
 
               <div class="formGroup">
                 <label for="weight">Weight KG</label>
-                <input id="weight" type="number" min="30" max="180" value="70" />
+                <input id="weight" type="number" min="30" max="180" placeholder="70 kg" />
               </div>
 
               <div class="formGroup">
@@ -1317,11 +1741,6 @@
           </div>
         </section>
       </main>
-
-      <footer class="footer">
-        <strong>Smart Size Finder</strong>
-        <span> · Offline demo website · Replace or expand the dataset when you add confirmed brand charts.</span>
-      </footer>
     </div>
 
     <script>
@@ -1910,6 +2329,34 @@
       document.getElementById("fitForm").addEventListener("submit", calculateRecommendation);
       renderCategories();
       renderGuide();
+
+      const revealTargets = () => document.querySelectorAll(".heroCopy, .heroVisual, .sectionHead, .formPanel, .resultPanel, .guideCard, .methodCard, .brandRow, .categoryButton");
+      const revealObserver = "IntersectionObserver" in window
+        ? new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("is-visible");
+            });
+          }, { threshold: 0.12 })
+        : null;
+
+      function refreshReveals() {
+        revealTargets().forEach((item, index) => {
+          item.classList.add("reveal-ready");
+          item.style.transitionDelay = `${Math.min(index * 34, 220)}ms`;
+          if (revealObserver) {
+            revealObserver.observe(item);
+          } else {
+            item.classList.add("is-visible");
+          }
+        });
+      }
+
+      refreshReveals();
+
+      window.addEventListener("pointermove", (event) => {
+        document.documentElement.style.setProperty("--mx", `${event.clientX}px`);
+        document.documentElement.style.setProperty("--my", `${event.clientY}px`);
+      }, { passive: true });
 
       if ("serviceWorker" in navigator && location.protocol !== "file:") {
         window.addEventListener("load", () => {
